@@ -1,25 +1,17 @@
-# GTNH Modify
-GTNH modpack modification mod, dedicated to the modification of the recipe.
+# GTNH-CutCorners
 
-English
-[中文](./README_CN.md)
+**Cut Corners** means *to do something in the easiest and shortest way, esp at the expense of high standards.*\
+**Cut Corners** 意思是 *用最简单最省事的方式做事，尤其是以牺牲高标准为代价。*
 
-## Config
-Do so in the `GTNHmodify.cfg` file. There are several modes:
-1. `None`: do nothing
-2. `OneTick`: all recipes are 1 tick _[Recommended]_
-3. `Tenths`: all recipes took a tenth of the time _[Recommended]_
-4. `Output64`: all inputs are 1 (if less than 1, nothing is done); All outputs are 64 (if greater than 64, nothing is done). 1 tick; 1 EU (if the EU is needed)
-5. `Energyless`: The energy of all recipes is 0
+GTNH-CutCorners (or GTNHCC for short) provides the ability to shorten the time spent on waiting for the recipes.
+But it does change the game experience of GTNH.\
+GTNH-CutCorners（或简称 GTNHCC）能够缩短等待配方的时间，但这也一定会影响你的 GTNH 游戏体验。
 
-Some modes are **not covered** to the full recipes, please stay tuned!
+GTNHCC is a fork of [GTNHModify](https://github.com/wohaopa/GTNHModify).\
+GTNHCC 是[万宁NH](https://github.com/wohaopa/GTNHModify)[*](https://www.mcmod.cn/class/15362.html)的一个分支。
 
-## TODO List
+You can open issues for bug reports, feature requests and suggestions.\
+你可以在 issues 里提交问题，请求功能和提出建议，或者[直接联系我](https://op.elytra.cn/about.html#%E4%B8%8E%E6%88%91%E8%81%94%E7%B3%BB)。
 
-- [x] GT Recipes
-- [x] Furnace Recipes
-- [x] Miner & Pumper
-
-
-
-
+Spreading GTNHCC to players who have not fully played GTNH is **NOT RECOMMENDED**.\
+**不推荐** 将 GTNHCC 传播给没有通关过 GTNH 的玩家。
