@@ -4,6 +4,7 @@ import cn.elytra.gtnh.cutcorners.CutCorners;
 import com.github.technus.tectech.TecTech;
 import com.github.technus.tectech.recipe.EyeOfHarmonyRecipe;
 import com.github.technus.tectech.recipe.TecTechRecipeMaps;
+import goodgenerator.api.recipe.GoodGeneratorRecipeMaps;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.util.GT_Recipe;
 import kubatech.api.helpers.ReflectionHelper;
@@ -20,6 +21,8 @@ public class GTRecipeInit {
 
     private static void updateGeneralRecipes() {
         RecipeMap.ALL_RECIPE_MAPS.forEach((s, map) -> {
+            if(map == GoodGeneratorRecipeMaps.naquadahReactorFuels) return;
+
             map.getAllRecipes().forEach(recipe -> CutCorners.getStrategy().updateGTRecipe(recipe));
         });
     }
