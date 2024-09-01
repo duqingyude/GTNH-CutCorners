@@ -12,7 +12,7 @@ public class LateMixinLoader implements ILateMixinLoader {
 
     @Override
     public String getMixinConfig() {
-        return "mixins.GTNHModify.late.json";
+        return "mixins.GTNHModify_CutCorners.late.json";
     }
 
     @Override
