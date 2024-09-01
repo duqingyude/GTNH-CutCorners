@@ -1,24 +1,28 @@
 package com.github.wohaopa.GTNHModify.mixins.late.botania;
 
-import org.objectweb.asm.Opcodes;
+import cn.elytra.gtnh.cutcorners.CutCorners;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
-
-import com.github.wohaopa.GTNHModify.handler.ThaumcraftHandler;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 import vazkii.botania.common.block.tile.mana.TileSpreader;
 
 @Mixin(value = TileSpreader.class, remap = false)
 public abstract class TileSpreaderMixin {
 
-    @Redirect(
-        method = "pingback",
-        at = @At(
-            value = "FIELD",
-            target = "Lvazkii/botania/common/block/tile/mana/TileSpreader;pingbackTicks:I",
-            opcode = Opcodes.PUTFIELD))
-    private void injectedPingback(TileSpreader tileSpreader, int pingbackTicks) {
-        tileSpreader.pingbackTicks = ThaumcraftHandler.handle(tileSpreader, pingbackTicks);
+//    @Redirect(
+//        method = "pingback",
+//        at = @At(
+//            value = "FIELD",
+//            target = "Lvazkii/botania/common/block/tile/mana/TileSpreader;pingbackTicks:I",
+//            opcode = Opcodes.PUTFIELD))
+//    private void injectedPingback(TileSpreader tileSpreader, int pingbackTicks) {
+//        tileSpreader.pingbackTicks = ThaumcraftHandler.handle(tileSpreader, pingbackTicks);
+//    }
+
+    @ModifyConstant(method = "pingback", constant = @Constant(intValue = 20 /* TICKS_ALLOWED_WITHOUT_PINGBACK */))
+    private int gtnhcc$updatePingbackTicks(int value) {
+        return CutCorners.getStrategy().getBotaniaSpreaderPingbackTicks(value);
     }
+
 }

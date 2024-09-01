@@ -16,7 +16,7 @@ public class GTNHModifyGuiConfig extends GuiConfig {
         super(
             guiScreen,
             new ConfigElement(Config.config.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(),
-            GTNHModifyMod.MODID,
+            GTNHModifyMod.MOD_ID,
             true,
             false,
             GuiConfig.getAbridgedConfigPath(Config.config.toString()));

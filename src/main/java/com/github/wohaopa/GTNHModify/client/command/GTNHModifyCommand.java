@@ -1,17 +1,15 @@
 package com.github.wohaopa.GTNHModify.client.command;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 
-import com.github.wohaopa.GTNHModify.handler.Handlers;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GTNHModifyCommand extends CommandBase {
 
@@ -89,9 +87,9 @@ public class GTNHModifyCommand extends CommandBase {
                     case "help" -> printHelps(sender);
                     case "hello" -> sender.addChatMessage(new ChatComponentText("你好"));
                     case "load" -> {
-                        if (Handlers.init())
-                            sender.addChatMessage(new ChatComponentTranslation("commands.gtnh-modify.load.success"));
-                        else sender.addChatMessage(new ChatComponentTranslation("commands.gtnh-modify.load.failure"));
+//                        if (Handlers.init())
+//                            sender.addChatMessage(new ChatComponentTranslation("commands.gtnh-modify.load.success"));
+//                        else sender.addChatMessage(new ChatComponentTranslation("commands.gtnh-modify.load.failure"));
                     }
                     default -> {
                         if (subCmds.contains(test)) {
