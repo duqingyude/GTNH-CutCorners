@@ -42,6 +42,10 @@ public class LateMixinLoader implements ILateMixinLoader {
         if (Mods.Botania.isLoaded()) {
             mixins.add("botania.TileSpreaderMixin");
         }
+        if (Mods.Railcraft.isLoaded()) {
+            mixins.add("railcraft.CokeOvenRecipeAccessor");
+            mixins.add("railcraft.BlastFurnaceRecipeAccessor");
+        }
 
         return mixins;
     }

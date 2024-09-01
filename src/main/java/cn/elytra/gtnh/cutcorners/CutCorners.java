@@ -1,6 +1,7 @@
 package cn.elytra.gtnh.cutcorners;
 
 import cn.elytra.gtnh.cutcorners.init.GTRecipeInit;
+import cn.elytra.gtnh.cutcorners.init.RailcraftRecipeInit;
 import cn.elytra.gtnh.cutcorners.init.VanillaRecipeInit;
 import cn.elytra.gtnh.cutcorners.strate.CutCornerStrategies;
 import cn.elytra.gtnh.cutcorners.strate.ICutCornerStrategy;
@@ -16,6 +17,7 @@ public class CutCorners {
     private static final Runnable[] INITIALIZERS = new Runnable[] {
         GTRecipeInit::init,
         VanillaRecipeInit::init,
+        RailcraftRecipeInit::init,
     };
 
     public static void setStrategy(ICutCornerStrategy strategy) {

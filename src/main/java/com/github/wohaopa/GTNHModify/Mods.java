@@ -5,7 +5,9 @@ public enum Mods {
     GregTech("gregtech"),
     Thaumcraft("Thaumcraft"),
     GtnhIntergalactic("gtnhintergalactic", false),
-    Botania("Botania"),;
+    Botania("Botania"),
+    Railcraft("Railcraft"),
+    ;
 
     public final String modid;
     private boolean isLoaded = false;

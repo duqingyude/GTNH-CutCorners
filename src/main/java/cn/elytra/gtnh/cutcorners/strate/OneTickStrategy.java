@@ -2,7 +2,11 @@ package cn.elytra.gtnh.cutcorners.strate;
 
 import com.github.technus.tectech.recipe.EyeOfHarmonyRecipe;
 import com.github.wohaopa.GTNHModify.mixins.late.gregtech.EyeOfHarmonyRecipeAccessor;
+import com.github.wohaopa.GTNHModify.mixins.late.railcraft.BlastFurnaceRecipeAccessor;
+import com.github.wohaopa.GTNHModify.mixins.late.railcraft.CokeOvenRecipeAccessor;
 import gregtech.api.util.GT_Recipe;
+import mods.railcraft.api.crafting.IBlastFurnaceRecipe;
+import mods.railcraft.api.crafting.ICokeOvenRecipe;
 
 public class OneTickStrategy implements ICutCornerStrategy {
 
@@ -47,5 +51,17 @@ public class OneTickStrategy implements ICutCornerStrategy {
     @Override
     public int getThaumcraftNodeRegenerationTime(int original) {
         return 1;
+    }
+
+    @Override
+    public void updateRailcraftCokeOvenRecipe(ICokeOvenRecipe recipe) {
+        CokeOvenRecipeAccessor r = (CokeOvenRecipeAccessor) recipe;
+        r.set_cookTime(1);
+    }
+
+    @Override
+    public void updateRailcraftBlastFurnaceRecipe(IBlastFurnaceRecipe recipe) {
+        BlastFurnaceRecipeAccessor r = (BlastFurnaceRecipeAccessor) recipe;
+        r.set_cookTime(1);
     }
 }
