@@ -1,68 +1,61 @@
 package cn.elytra.gtnh.cutcorners.strate;
 
+import cn.elytra.gtnh.cutcorners.strate.event.CutCornersEvents;
 import com.github.technus.tectech.recipe.EyeOfHarmonyRecipe;
-import com.github.wohaopa.GTNHModify.mixins.late.gregtech.EyeOfHarmonyRecipeAccessor;
-import com.github.wohaopa.GTNHModify.mixins.late.railcraft.BlastFurnaceRecipeAccessor;
-import com.github.wohaopa.GTNHModify.mixins.late.railcraft.CokeOvenRecipeAccessor;
 import gregtech.api.util.GT_Recipe;
 import mods.railcraft.api.crafting.IBlastFurnaceRecipe;
 import mods.railcraft.api.crafting.ICokeOvenRecipe;
+import net.minecraft.item.ItemStack;
 
-@Deprecated
-public class OneTickStrategy implements ICutCornerStrategy {
+public class EventStrategy implements ICutCornerStrategy {
 
-    @Override
     public void updateGTRecipe(GT_Recipe recipe) {
-        recipe.mDuration = 1;
+        CutCornersEvents.onGTRecipe(recipe);
     }
 
-    @Override
     public void updateAssemblyLineRecipe(GT_Recipe.GT_Recipe_AssemblyLine recipe) {
-        recipe.mDuration = 1;
+        CutCornersEvents.onAssemblyLineRecipe(recipe);
     }
 
-    @Override
     public void updateEOHRecipe(EyeOfHarmonyRecipe recipe) {
-        EyeOfHarmonyRecipeAccessor r = (EyeOfHarmonyRecipeAccessor) recipe;
-        r.set_miningTimeSeconds(1);
-        r.set_baseSuccessChance(5);
-        r.set_euOutput(Integer.MAX_VALUE);
+        CutCornersEvents.onEyeOfHarmonyRecipe(recipe);
     }
 
     @Override
+    public void updateResearchStationRecipe(GT_Recipe recipe) {
+        CutCornersEvents.onResearchStationRecipe(recipe);
+    }
+
+    public void updateFurnaceRecipe_size(ItemStack stackIn, ItemStack stackOut) {
+        // noop
+    }
+
     public int getMaxFurnaceSmeltingTime(int original) {
-        return 1;
+        return CutCornersEvents.getFurnaceDuration(original);
     }
 
-    @Override
     public int getBotaniaSpreaderPingbackTicks(int original) {
-        return 1;
+        return CutCornersEvents.getBotaniaSpreadPingback(original);
     }
 
-    @Override
     public int getMaxProgressTime(Object instance, int original) {
-        return 1;
+        return CutCornersEvents.getGTMaxProgressTime(instance, original);
     }
 
-    @Override
     public int getThaumcraftFurnaceSmeltingTime(int original) {
-        return 1;
+        return CutCornersEvents.getTCFurnaceSmeltingTime(original);
     }
 
-    @Override
     public int getThaumcraftNodeRegenerationTime(int original) {
-        return 1;
+        return CutCornersEvents.getTCNodeRegenerationTime(original);
     }
 
-    @Override
     public void updateRailcraftCokeOvenRecipe(ICokeOvenRecipe recipe) {
-        CokeOvenRecipeAccessor r = (CokeOvenRecipeAccessor) recipe;
-        r.set_cookTime(1);
+        CutCornersEvents.onCokeOvenRecipe(recipe);
     }
 
-    @Override
     public void updateRailcraftBlastFurnaceRecipe(IBlastFurnaceRecipe recipe) {
-        BlastFurnaceRecipeAccessor r = (BlastFurnaceRecipeAccessor) recipe;
-        r.set_cookTime(1);
+        CutCornersEvents.onBlastFurnaceRecipe(recipe);
     }
+
 }

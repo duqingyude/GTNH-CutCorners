@@ -5,6 +5,7 @@ import com.github.wohaopa.GTNHModify.mixins.late.gregtech.EyeOfHarmonyRecipeAcce
 import gregtech.api.enums.TierEU;
 import gregtech.api.util.GT_Recipe;
 
+@Deprecated
 public class OneTickLVStrategy extends OneTickStrategy {
 
     private static final int RECIPE_LV = (int) TierEU.RECIPE_LV;

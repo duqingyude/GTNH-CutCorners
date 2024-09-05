@@ -1,14 +1,18 @@
 package cn.elytra.gtnh.cutcorners.strate;
 
-import com.github.technus.tectech.recipe.EyeOfHarmonyRecipe;
-import gregtech.api.enums.TierEU;
-import gregtech.api.util.GT_Recipe;
-import net.minecraft.item.ItemStack;
-
 import java.util.Optional;
 
 public class CutCornerStrategies {
 
+    public static Optional<ICutCornerStrategy> getByName(String name) {
+        return switch (name) {
+            case "NOOP" -> Optional.of(NOOP);
+            case "EVENT" -> Optional.of(EVENT);
+            default -> Optional.empty();
+        };
+    }
+
+    @Deprecated
     public static Optional<ICutCornerStrategy> valueOf(String name) {
         switch(name) {
             case "NOOP":
@@ -26,14 +30,19 @@ public class CutCornerStrategies {
             case "Output64":
             case "Energyless":
                 throw new IllegalStateException("The strategy " + name + " is not implemented in CutCorners.");
+            case "EVENT":
+                return Optional.of(EVENT);
             default:
                 return Optional.empty();
         }
     }
 
     public static final ICutCornerStrategy NOOP = new ICutCornerStrategy() {};
-    public static final OneTickStrategy ONE_TICK = new OneTickStrategy();
-    public static final ReducedDurationStrategy REDUCED_DURATION = new ReducedDurationStrategy();
-    public static final OneTickLVStrategy ONE_TICK_ALL_LV = new OneTickLVStrategy();
+
+    @Deprecated public static final OneTickStrategy ONE_TICK = new OneTickStrategy();
+    @Deprecated public static final ReducedDurationStrategy REDUCED_DURATION = new ReducedDurationStrategy();
+    @Deprecated public static final OneTickLVStrategy ONE_TICK_ALL_LV = new OneTickLVStrategy();
+
+    public static final EventStrategy EVENT = new EventStrategy();
 
 }

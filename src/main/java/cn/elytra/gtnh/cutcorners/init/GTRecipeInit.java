@@ -1,6 +1,7 @@
 package cn.elytra.gtnh.cutcorners.init;
 
 import cn.elytra.gtnh.cutcorners.CutCorners;
+import cn.elytra.gtnh.cutcorners.strate.event.CutCornersEvents;
 import com.github.technus.tectech.TecTech;
 import com.github.technus.tectech.recipe.EyeOfHarmonyRecipe;
 import com.github.technus.tectech.recipe.TecTechRecipeMaps;
@@ -17,31 +18,30 @@ public class GTRecipeInit {
         updateGeneralRecipes();
         updateAssemblyLineRecipes();
         updateEOHRecipes();
+        updateResearchStationRecipes();
     }
 
     private static void updateGeneralRecipes() {
         RecipeMap.ALL_RECIPE_MAPS.forEach((s, map) -> {
-            if(map == GoodGeneratorRecipeMaps.naquadahReactorFuels) return;
+            if (map == GoodGeneratorRecipeMaps.naquadahReactorFuels) return;
 
             map.getAllRecipes().forEach(recipe -> CutCorners.getStrategy().updateGTRecipe(recipe));
         });
     }
 
     private static void updateAssemblyLineRecipes() {
-        GT_Recipe.GT_Recipe_AssemblyLine.sAssemblylineRecipes.forEach((recipe) -> {
-            CutCorners.getStrategy().updateAssemblyLineRecipe(recipe);
-        });
+        GT_Recipe.GT_Recipe_AssemblyLine.sAssemblylineRecipes.forEach((recipe) -> CutCorners.getStrategy().updateAssemblyLineRecipe(recipe));
     }
 
     private static void updateEOHRecipes() {
-        TecTechRecipeMaps.eyeOfHarmonyRecipes.getAllRecipes().forEach(recipe -> {
-            CutCorners.getStrategy().updateGTRecipe(recipe);
-        });
+        TecTechRecipeMaps.eyeOfHarmonyRecipes.getAllRecipes().forEach(recipe -> CutCorners.getStrategy().updateGTRecipe(recipe));
 
         var recipeMap = ReflectionHelper.<HashMap<String, EyeOfHarmonyRecipe>>getField(TecTech.eyeOfHarmonyRecipeStorage, "recipeHashMap");
-        recipeMap.forEach((s, recipe) -> {
-            CutCorners.getStrategy().updateEOHRecipe(recipe);
-        });
+        recipeMap.forEach((s, recipe) -> CutCorners.getStrategy().updateEOHRecipe(recipe));
+    }
+
+    private static void updateResearchStationRecipes() {
+        TecTechRecipeMaps.researchStationFakeRecipes.getAllRecipes().forEach(recipe -> CutCorners.getStrategy().updateResearchStationRecipe(recipe));
     }
 
 }

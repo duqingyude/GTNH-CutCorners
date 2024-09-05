@@ -4,7 +4,6 @@ import com.github.technus.tectech.recipe.EyeOfHarmonyRecipe;
 import gregtech.api.util.GT_Recipe;
 import mods.railcraft.api.crafting.IBlastFurnaceRecipe;
 import mods.railcraft.api.crafting.ICokeOvenRecipe;
-import mods.railcraft.common.util.crafting.CokeOvenCraftingManager;
 import net.minecraft.item.ItemStack;
 
 public interface ICutCornerStrategy {
@@ -16,6 +15,9 @@ public interface ICutCornerStrategy {
     }
 
     default void updateEOHRecipe(EyeOfHarmonyRecipe recipe) {
+    }
+
+    default void updateResearchStationRecipe(GT_Recipe recipe) {
     }
 
     default void updateFurnaceRecipe_size(ItemStack stackIn, ItemStack stackOut) {

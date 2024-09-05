@@ -8,6 +8,7 @@ import gregtech.api.util.GT_Recipe;
 import mods.railcraft.api.crafting.IBlastFurnaceRecipe;
 import mods.railcraft.api.crafting.ICokeOvenRecipe;
 
+@Deprecated
 public class ReducedDurationStrategy implements ICutCornerStrategy {
 
     public int reducedBy = 100;
