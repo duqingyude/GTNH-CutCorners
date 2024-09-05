@@ -12,15 +12,13 @@ public class RailcraftRecipeInit {
     }
 
     private static void updateCokeOvenRecipes() {
-        CokeOvenCraftingManager.getInstance().getRecipes().forEach((recipe) -> {
-            CutCorners.getStrategy().updateRailcraftCokeOvenRecipe(recipe);
-        });
+        CutCorners.LOG.info("Updating Railcraft Coke Oven Recipes");
+        CokeOvenCraftingManager.getInstance().getRecipes().forEach((recipe) -> CutCorners.getStrategy().updateRailcraftCokeOvenRecipe(recipe));
     }
 
     private static void updateBlastFurnaceRecipes() {
-        BlastFurnaceCraftingManager.getInstance().getRecipes().forEach((recipe) -> {
-            CutCorners.getStrategy().updateRailcraftBlastFurnaceRecipe(recipe);
-        });
+        CutCorners.LOG.info("Updating Railcraft Blast Furnace Recipes");
+        BlastFurnaceCraftingManager.getInstance().getRecipes().forEach((recipe) -> CutCorners.getStrategy().updateRailcraftBlastFurnaceRecipe(recipe));
     }
 
 }

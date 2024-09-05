@@ -14,7 +14,7 @@ public class CutCorners {
 
     private static ICutCornerStrategy strategy = CutCornerStrategies.EVENT;
 
-    public static final Logger LOG = LogManager.getLogger("CutCorners");
+    public static final Logger LOG = LogManager.getLogger("GTNH-CutCorners");
 
     private static final Runnable[] INITIALIZERS = new Runnable[]{
         GTRecipeInit::init,

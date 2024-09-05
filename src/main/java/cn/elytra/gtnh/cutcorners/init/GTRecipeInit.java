@@ -1,7 +1,6 @@
 package cn.elytra.gtnh.cutcorners.init;
 
 import cn.elytra.gtnh.cutcorners.CutCorners;
-import cn.elytra.gtnh.cutcorners.strate.event.CutCornersEvents;
 import com.github.technus.tectech.TecTech;
 import com.github.technus.tectech.recipe.EyeOfHarmonyRecipe;
 import com.github.technus.tectech.recipe.TecTechRecipeMaps;
@@ -24,16 +23,18 @@ public class GTRecipeInit {
     private static void updateGeneralRecipes() {
         RecipeMap.ALL_RECIPE_MAPS.forEach((s, map) -> {
             if (map == GoodGeneratorRecipeMaps.naquadahReactorFuels) return;
-
+            CutCorners.LOG.info("Updating GT_Recipe Map: {}", map.unlocalizedName);
             map.getAllRecipes().forEach(recipe -> CutCorners.getStrategy().updateGTRecipe(recipe));
         });
     }
 
     private static void updateAssemblyLineRecipes() {
+        CutCorners.LOG.info("Updating Assembly Line Recipes");
         GT_Recipe.GT_Recipe_AssemblyLine.sAssemblylineRecipes.forEach((recipe) -> CutCorners.getStrategy().updateAssemblyLineRecipe(recipe));
     }
 
     private static void updateEOHRecipes() {
+        CutCorners.LOG.info("Updating Eye of Harmony Recipes");
         TecTechRecipeMaps.eyeOfHarmonyRecipes.getAllRecipes().forEach(recipe -> CutCorners.getStrategy().updateGTRecipe(recipe));
 
         var recipeMap = ReflectionHelper.<HashMap<String, EyeOfHarmonyRecipe>>getField(TecTech.eyeOfHarmonyRecipeStorage, "recipeHashMap");
@@ -41,6 +42,7 @@ public class GTRecipeInit {
     }
 
     private static void updateResearchStationRecipes() {
+        CutCorners.LOG.info("Updating Research Station Recipes");
         TecTechRecipeMaps.researchStationFakeRecipes.getAllRecipes().forEach(recipe -> CutCorners.getStrategy().updateResearchStationRecipe(recipe));
     }
 

@@ -22,8 +22,6 @@ public class CommonProxy {
         }
 
         Config.init(event.getSuggestedConfigurationFile());
-
-        
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
@@ -34,6 +32,7 @@ public class CommonProxy {
 
     // register server commands in this event handler (Remove if not needed)
     public void serverStarting(FMLServerStartingEvent event) {
+        CutCorners.LOG.info("Cutting and initializing all recipes");
         CutCorners.init();
     }
 }
