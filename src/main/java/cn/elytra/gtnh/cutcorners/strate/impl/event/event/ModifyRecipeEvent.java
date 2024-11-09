@@ -1,4 +1,4 @@
-package cn.elytra.gtnh.cutcorners.strate.event;
+package cn.elytra.gtnh.cutcorners.strate.impl.event.event;
 
 import com.github.technus.tectech.recipe.EyeOfHarmonyRecipe;
 import com.github.wohaopa.GTNHModify.mixins.late.gregtech.EyeOfHarmonyRecipeAccessor;
@@ -8,7 +8,6 @@ import cpw.mods.fml.common.eventhandler.Event;
 import gregtech.api.util.GT_Recipe;
 import mods.railcraft.api.crafting.IBlastFurnaceRecipe;
 import mods.railcraft.api.crafting.ICokeOvenRecipe;
-import net.minecraft.item.ItemStack;
 
 public abstract class ModifyRecipeEvent<T> extends Event {
 
@@ -18,19 +17,39 @@ public abstract class ModifyRecipeEvent<T> extends Event {
         this.recipe = recipe;
     }
 
-    public static class GregTech extends ModifyRecipeEvent<GT_Recipe> {
+    public static class GregTech extends ModifyRecipeEvent<GT_Recipe> implements IHasDuration {
         public GregTech(GT_Recipe recipe) {
             super(recipe);
         }
-    }
 
-    public static class GT_AssemblyLine extends ModifyRecipeEvent<GT_Recipe.GT_Recipe_AssemblyLine> {
-        public GT_AssemblyLine(GT_Recipe.GT_Recipe_AssemblyLine recipe) {
-            super(recipe);
+        @Override
+        public int getDuration() {
+            return recipe.mDuration;
+        }
+
+        @Override
+        public void setDuration(int duration) {
+            recipe.mDuration = duration;
         }
     }
 
-    public static class GT_EyeOfHarmony extends ModifyRecipeEvent<EyeOfHarmonyRecipe> {
+    public static class GT_AssemblyLine extends ModifyRecipeEvent<GT_Recipe.GT_Recipe_AssemblyLine> implements IHasDuration {
+        public GT_AssemblyLine(GT_Recipe.GT_Recipe_AssemblyLine recipe) {
+            super(recipe);
+        }
+
+        @Override
+        public int getDuration() {
+            return recipe.mDuration;
+        }
+
+        @Override
+        public void setDuration(int duration) {
+            recipe.mDuration = duration;
+        }
+    }
+
+    public static class GT_EyeOfHarmony extends ModifyRecipeEvent<EyeOfHarmonyRecipe> implements IHasLongDuration {
         public GT_EyeOfHarmony(EyeOfHarmonyRecipe recipe) {
             super(recipe);
         }
@@ -38,9 +57,19 @@ public abstract class ModifyRecipeEvent<T> extends Event {
         public EyeOfHarmonyRecipeAccessor getAccessor() {
             return (EyeOfHarmonyRecipeAccessor) recipe;
         }
+
+        @Override
+        public long getDuration() {
+            return getAccessor().get_miningTimeSeconds();
+        }
+
+        @Override
+        public void setDuration(long duration) {
+            getAccessor().set_miningTimeSeconds(duration);
+        }
     }
 
-    public static class RC_CokeOven extends ModifyRecipeEvent<ICokeOvenRecipe> {
+    public static class RC_CokeOven extends ModifyRecipeEvent<ICokeOvenRecipe> implements IHasDuration {
         public RC_CokeOven(ICokeOvenRecipe recipe) {
             super(recipe);
         }
@@ -48,9 +77,19 @@ public abstract class ModifyRecipeEvent<T> extends Event {
         public CokeOvenRecipeAccessor getAccessor() {
             return (CokeOvenRecipeAccessor) recipe;
         }
+
+        @Override
+        public int getDuration() {
+            return getAccessor().get_cookTime();
+        }
+
+        @Override
+        public void setDuration(int duration) {
+            getAccessor().set_cookTime(duration);
+        }
     }
 
-    public static class RC_BlastFurnace extends ModifyRecipeEvent<IBlastFurnaceRecipe> {
+    public static class RC_BlastFurnace extends ModifyRecipeEvent<IBlastFurnaceRecipe> implements IHasDuration {
         public RC_BlastFurnace(IBlastFurnaceRecipe recipe) {
             super(recipe);
         }
@@ -58,9 +97,19 @@ public abstract class ModifyRecipeEvent<T> extends Event {
         public BlastFurnaceRecipeAccessor getAccessor() {
             return (BlastFurnaceRecipeAccessor) recipe;
         }
+
+        @Override
+        public int getDuration() {
+            return getAccessor().get_cookTime();
+        }
+
+        @Override
+        public void setDuration(int duration) {
+            getAccessor().set_cookTime(duration);
+        }
     }
 
-    public static class GT_ResearchStation extends ModifyRecipeEvent<GT_Recipe> {
+    public static class GT_ResearchStation extends GregTech {
         public GT_ResearchStation(GT_Recipe recipe) {
             super(recipe);
         }
