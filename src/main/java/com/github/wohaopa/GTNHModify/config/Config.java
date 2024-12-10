@@ -71,11 +71,12 @@ public class Config {
         Property propEventHandlers = config.get(
             Configuration.CATEGORY_GENERAL,
             "EventHandlers",
-            new String[] {"ONE_TICK"},
+            new String[] {"TENFOLD_REDUCTION_TICK"},
             """
                 The event handlers used by EVENT strategy.
                 ONE_TICK: All recipes and processing time are set to 1 tick.
-                GT_TIER_LV: All voltage tier of GT recipes are set to LV."""
+                GT_TIER_LV: All voltage tier of GT recipes are set to LV.
+                TENFOLD_REDUCTION_TICK: All recipes and processing time are set to tenfold reduction tick"""
         );
         String[] eventHandlerNames = propEventHandlers.getStringList();
         for (String name : eventHandlerNames) {
