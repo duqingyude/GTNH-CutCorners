@@ -34,7 +34,7 @@ public interface ValueModification {
     record Rational(double multiplier) implements ValueModification {
         @Override
         public int getModifiedValue(int originalValue) {
-            return (int) multiplier * originalValue;
+            return (int) (multiplier * originalValue);
         }
     }
 }
