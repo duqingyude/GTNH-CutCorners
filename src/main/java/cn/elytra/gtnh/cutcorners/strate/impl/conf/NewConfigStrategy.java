@@ -3,7 +3,7 @@ package cn.elytra.gtnh.cutcorners.strate.impl.conf;
 import cn.elytra.gtnh.cutcorners.CutCorners;
 import cn.elytra.gtnh.cutcorners.config.CutCornersConfig;
 import cn.elytra.gtnh.cutcorners.strate.ICutCornerStrategy;
-import cn.elytra.gtnh.cutcorners.strate.util.ResearchStationHelper;
+import cn.elytra.gtnh.cutcorners.util.ResearchStationHelper;
 import com.github.wohaopa.GTNHModify.mixins.late.gregtech.EyeOfHarmonyRecipeAccessor;
 import com.github.wohaopa.GTNHModify.mixins.late.railcraft.BlastFurnaceRecipeAccessor;
 import com.github.wohaopa.GTNHModify.mixins.late.railcraft.CokeOvenRecipeAccessor;

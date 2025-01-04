@@ -14,7 +14,12 @@ import org.apache.logging.log4j.Logger;
     name = "GTNHModify",
     acceptedMinecraftVersions = "[1.7.10]",
     acceptableRemoteVersions = "*",
-    dependencies = "after:gregtech;after:Thaumcraft;after:tectech;")
+    dependencies = "required-after:gregtech;" +
+        "required-after:Thaumcraft;" +
+        "required-after:tectech;" +
+        "required-after:miscutils;" +
+        "required-after:GoodGenerator;" +
+        "after:Twist-Space-Technology;")
 public class GTNHModifyMod {
 
     public static final String MOD_ID = "GTNHModify_CutCorners";

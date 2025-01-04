@@ -1,4 +1,4 @@
-import cn.elytra.gtnh.cutcorners.strate.util.ResearchStationHelper;
+import cn.elytra.gtnh.cutcorners.util.ResearchStationHelper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
