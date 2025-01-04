@@ -20,11 +20,13 @@ public class CommonProxy {
     public void init(FMLInitializationEvent event) {}
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
-    public void postInit(FMLPostInitializationEvent event) {}
+    public void postInit(FMLPostInitializationEvent event) {
+        CutCorners.postInit();
+    }
 
     public void loadComplete(FMLLoadCompleteEvent event) {
         CutCorners.LOG.info("Cutting and initializing all recipes");
-        CutCorners.init();
+        CutCorners.loadComplete();
     }
 
     // register server commands in this event handler (Remove if not needed)

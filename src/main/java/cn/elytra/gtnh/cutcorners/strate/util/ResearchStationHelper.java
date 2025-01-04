@@ -17,7 +17,7 @@ public class ResearchStationHelper {
     }
 
     public static int getSpecialValueAtMinComputation(int specialValue, int minComputation) {
-        return (specialValue & MASK) | (minComputation & MASK << 16);
+        return (specialValue & MASK) | ((minComputation & MASK) << 16);
     }
 
 }

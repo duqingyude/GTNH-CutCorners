@@ -5,6 +5,14 @@ import cn.elytra.gtnh.cutcorners.init.RailcraftRecipeInit;
 import cn.elytra.gtnh.cutcorners.init.VanillaRecipeInit;
 import cn.elytra.gtnh.cutcorners.strate.ICutCornerStrategy;
 import cn.elytra.gtnh.cutcorners.strate.impl.event.CutCornersEventDispatchHelper;
+import gregtech.api.enums.GTValues;
+import gregtech.api.enums.ItemList;
+import gregtech.api.enums.Materials;
+import gregtech.api.enums.OrePrefixes;
+import gregtech.api.util.GTRecipeConstants;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.launchwrapper.Launch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +49,7 @@ public class CutCorners {
     }
 
     // called in LoadComplete event
-    public static void init() {
+    public static void loadComplete() {
         if (initialized) {
             CutCornersEventDispatchHelper.checkReinitializeCompatibility();
         }
@@ -64,5 +72,32 @@ public class CutCorners {
     @Deprecated
     public static void unregisterListener(Object listener) {
         CutCornersEventDispatchHelper.unregisterListener(listener);
+    }
+
+    private static boolean isDevEnvironment() {
+        return (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
+    }
+
+    public static void postInit() {
+        if(isDevEnvironment()) {
+            LOG.info("Development Environment detected, adding Testing Recipes");
+
+            GTValues.RA.stdBuilder()
+                .metadata(GTRecipeConstants.RESEARCH_ITEM, new ItemStack(Items.apple))
+                .metadata(GTRecipeConstants.RESEARCH_TIME, 1)
+                .itemInputs(
+                    ItemList.AdvDebugStructureWriter.get(1),
+                    new Object[] {OrePrefixes.circuit.get(Materials.UXV), 16},
+                    new Object[] {OrePrefixes.circuit.get(Materials.UXV), 16},
+                    new Object[] {OrePrefixes.circuit.get(Materials.UXV), 16}
+                )
+                .fluidInputs(
+                    Materials.Lubricant.getFluid(1000)
+                )
+                .itemOutputs(new ItemStack(Items.stick))
+                .eut(1)
+                .duration(1)
+                .addTo(GTRecipeConstants.AssemblyLine);
+        }
     }
 }
