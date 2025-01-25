@@ -31,6 +31,7 @@ public class LateMixinLoader implements ILateMixinLoader {
             mixins.add("gregtech.GT_MetaTileEntity_MultiFurnaceMixin");
             mixins.add("gregtech.GT_MetaTileEntity_DrillerBaseMixin");
             mixins.add("gregtech.EyeOfHarmonyRecipeAccessor");
+            mixins.add("gregtech.EyeOfHarmonyFrontendFixMixin");
         }
         if (Mods.Thaumcraft.isLoaded()) {
             mixins.add("thaumcraft.TileAlchemyFurnaceMixin");
