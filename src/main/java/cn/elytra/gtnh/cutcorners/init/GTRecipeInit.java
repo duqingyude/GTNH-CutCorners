@@ -21,9 +21,7 @@ public class GTRecipeInit {
     }
 
     private static void updateGeneralRecipes() {
-        RecipeMap.ALL_RECIPE_MAPS.forEach((s, map) -> {
-            CutCorners.getStrategy().updateGTRecipeMap(map);
-        });
+        RecipeMap.ALL_RECIPE_MAPS.forEach((s, map) -> CutCorners.getStrategy().updateGTRecipeMap(map));
     }
 
     private static void updateAssemblyLineRecipes() {
@@ -55,9 +53,9 @@ public class GTRecipeInit {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private static HashMap<String, EyeOfHarmonyRecipe> getRecipeHashMap(EyeOfHarmonyRecipeStorage storage) {
         try {
-            //noinspection unchecked
             return (HashMap<String, EyeOfHarmonyRecipe>) FIELD_RECIPE_HASH_MAP.get(storage);
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
