@@ -30,6 +30,8 @@ public class CCMixinLoader implements ILateMixinLoader {
             mixins.add("gregtech.GT_MetaTileEntity_DrillerBaseMixin");
             mixins.add("gregtech.EyeOfHarmonyRecipeAccessor");
             mixins.add("gregtech.EyeOfHarmonyFrontendFixMixin");
+
+            mixins.add("gregtech.MTESteamFurnaceMixin");
         }
         if (Mods.Thaumcraft.isLoaded()) {
             mixins.add("thaumcraft.TileAlchemyFurnaceMixin");
