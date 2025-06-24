@@ -46,6 +46,8 @@ public class CCMixinLoader implements ILateMixinLoader {
         if (Mods.Railcraft.isLoaded()) {
             mixins.add("railcraft.CokeOvenRecipeAccessor");
             mixins.add("railcraft.BlastFurnaceRecipeAccessor");
+
+            mixins.add("railcraft.TileCokeOvenMixin");
         }
 
         return mixins;
